@@ -24,7 +24,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: "https://sandbox-app.brighthr.com/lite",
-    testIdAttribute: "data-test",
+    testIdAttribute: "data-testid",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on",

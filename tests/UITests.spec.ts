@@ -1,21 +1,22 @@
-import { test } from './Fixtures/Login';
-import { HomePage } from './Page Objects/HomePage';
-import { LoginPage } from './Page Objects/LoginPage';
+import { test, expect } from './Fixtures/Login';
 
-const BASE_URL = "https://sandbox-app.brighthr.com/lite";
-
-test.describe("homepage", () => {
-  let home: HomePage;
-  let loginPage: LoginPage;
-  test.beforeEach(async ({ page }) => {
-    await page.goto(BASE_URL);
-    home = new HomePage(page);
-    loginPage = new LoginPage(page);
+  test('Test Adding a new employee', async ({ logIn, homePage, employeesHub }) => {
+    await homePage.assertEmployeeSideBarOptionDisplayed();
+    await homePage.clickEmployeeSideBarOption();
+    await employeesHub.assertEmployeesHubPageDisplayed();
+    await employeesHub.clickAddEmployeeButton();
+    await employeesHub.assertAddNewEmployeeModalDisplayed();
+    await employeesHub.addNewEmployee1Details();
+    // await employeesHub.fillInNewEmployeeDetails();
+    // await employeesHub.clickAddNewEmployeeButton();
   });
 
-test('Test Login', async ({ page }) => {
-  await home.goToLoginPage();
-  await loginPage.fillInCredentials();
-  await loginPage.clickLoginButton();
-  });
-});
+
+  // await page.getByRole('textbox', { name: 'First name' }).click();
+  // await page.getByRole('textbox', { name: 'First name' }).fill('trevor.chivers12@gmail.com');
+  // await page.getByRole('textbox', { name: 'Last name' }).click();
+  // await page.getByText('First nameLast nameEmail').click();
+  // await page.getByRole('textbox', { name: 'First name' }).click();
+  // await page.getByRole('textbox', { name: 'First name' }).click({
+
+  // https://sandbox-app.brighthr.com/employee-hub

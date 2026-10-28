@@ -1,7 +1,8 @@
-import { Page } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 import { commonHelper } from '../Helpers/commonHelper';
 
 export class LoginPage {
+  
   private readonly page: Page;
   private readonly loginLink: string;
   private readonly emailAddressField: string;
@@ -19,7 +20,7 @@ export class LoginPage {
     this.passwordField = "Password visibility"
     this.username = "trevor.chivers12@gmail.com"
     this.password = "Testingtask123"
-    this.loginButton = "Login"
+    this.loginButton = "login-button"
   }
 
   async fillInCredentials() {
@@ -28,8 +29,8 @@ export class LoginPage {
     await this.commonHelper.fillTextbox(this.emailAddressField, this.username);
     await this.commonHelper.fillTextbox(this.passwordField, this.password);
   }
-
+  
   async clickLoginButton() {
-    await this.commonHelper.clickButton(this.loginButton);
+    await this.commonHelper.clickButtonByTestId(this.loginButton);
   }
 }
