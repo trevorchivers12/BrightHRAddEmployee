@@ -27,7 +27,7 @@ export const test = base.extend<LoginFixtures>({
   },
 
   logIn: async ({ page, homePage, loginPage }, use) => {
-    await homePage.goToLoginPage();
+    await loginPage.goToLoginPage();
     await loginPage.fillInCredentials();
     await loginPage.clickLoginButton();
     await homePage.assertHomepageURLDisplayed();

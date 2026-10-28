@@ -16,10 +16,6 @@ private readonly sideBarOption: string;
     this.sideBarOption = "Employees";
   }
 
-  async goToLoginPage() {
-    await this.commonHelper.clickLink(this.loginLink);
-  }
-
   async assertHomepageURLDisplayed() {
     await this.commonHelper.assertURLDisplayed(new URL(this.homePageURL));
   }

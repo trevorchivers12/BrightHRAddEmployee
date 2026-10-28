@@ -1,6 +1,6 @@
 import { test, expect } from './Fixtures/Login';
 
-  test('Test Adding a new employees', async ({ logIn, homePage, employeesHub }) => {
+  test('Able to Add Two Employees Successfully', async ({ logIn, homePage, employeesHub }) => {
     await homePage.assertEmployeeSideBarOptionDisplayed();
     await homePage.clickEmployeeSideBarOption();
     await employeesHub.assertEmployeesHubPageDisplayed();
@@ -12,4 +12,7 @@ import { test, expect } from './Fixtures/Login';
     await employeesHub.addDetailForEmployee2();
     await employeesHub.assertSuccessfulModalAndMessageDisplayedForNewEmployee('testFirstName2');
     await employeesHub.clickCloseModalButton();
+    await employeesHub.assertEmployeesHubPageDisplayed();
+    await employeesHub.assertEmployeeAddedToHub('testFirstName1', 'testLastName1');
+    await employeesHub.assertEmployeeAddedToHub('testFirstName2', 'testLastName2');
   });

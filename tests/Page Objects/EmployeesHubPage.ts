@@ -9,6 +9,7 @@ export class EmployeesHub {
   private readonly closeModalButton: string;
   private readonly employeesHubPageTitle: string;
   private readonly addNewEmployeeTitle: string;
+  private readonly employeeCountHeader: string;
   private readonly firstNameField: string;
   private readonly lastNameField: string;
   private readonly emailAddressField: string;
@@ -39,6 +40,7 @@ export class EmployeesHub {
     this.closeModalButton = "Close modal"
     this.employeesHubPageTitle = "Employees";
     this.addNewEmployeeTitle = "Add new employee";
+    this.employeeCountHeader = "Employees (3)"
     this.firstNameField = "First name"
     this.lastNameField = "Last name"
     this.emailAddressField = "Email address"
@@ -46,11 +48,11 @@ export class EmployeesHub {
     this.startDateField = "Start date (optional)"
     this.jobTitleField = "Job Title"
     this.employeeFirstName1 = "testFirstName1";
-    this.employeeLastName1 = "lastName1";
+    this.employeeLastName1 = "testlastName1";
     this.employeeEmailAddress1 = "test@test1.com";
     this.employeePhoneNumber1 = "07123456789";
     this.employeeFirstName2 = "testFirstName2";
-    this.employeeLastName2 = "lastName2";
+    this.employeeLastName2 = "testlastName2";
     this.employeeEmailAddress2 = "test@test2.com";
     this.employeePhoneNumber2 = "07987654321";
     this.startDate = "12/02/2000"
@@ -67,6 +69,22 @@ export class EmployeesHub {
     async assertEmployeesPageTitleDisplayed() {
       await this.commonHelper.assertPageTitleIsDisplayed(this.employeesHubPageTitle);
     }
+
+    async assertEmployeeCountTitle() {
+      await this.commonHelper.assertPageTitleIsDisplayed(this.employeeCountHeader)
+    }
+
+    async assertEmployeeAddedToHub(firstName: string, lastName: string) {
+      await this.commonHelper.assertTextDisplayed(`${firstName} ${lastName}`)
+    }
+
+    // async assertEmployee1AddedToHub() {
+    //   await this.commonHelper.assertPageTitleIsDisplayed(`${this.employeeFirstName1} ${this.employeeLastName1}`)
+    // }
+
+    // async assertEmployee2AddedToHub() {
+    //   await this.commonHelper.assertPageTitleIsDisplayed(`${this.employeeFirstName2} ${this.employeeLastName2}`)
+    // }
 
     async assertAddNewEmployeeTitleIsDisplayed () {
       await this.commonHelper.assertPageTitleIsDisplayed(this.addNewEmployeeTitle);

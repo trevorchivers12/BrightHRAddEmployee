@@ -23,6 +23,10 @@ export class LoginPage {
     this.loginButton = "login-button"
   }
 
+  async goToLoginPage() {
+    await this.commonHelper.clickLink(this.loginLink);
+  }
+
   async fillInCredentials() {
     await this.commonHelper.assertTextBoxDisplayed(this.emailAddressField);
     await this.commonHelper.assertTextBoxDisplayed(this.passwordField);
