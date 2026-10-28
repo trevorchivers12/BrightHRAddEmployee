@@ -49,8 +49,8 @@ jobs:
         run: npx playwright test --project=chromium
         env:
           CI: true
-          BRIGHTHR_USERNAME: ${{ secrets.BRIGHTHR_USERNAME }}
-          BRIGHTHR_PASSWORD: ${{ secrets.BRIGHTHR_PASSWORD }}
+          # BRIGHTHR_USERNAME: ${{ secrets.BRIGHTHR_USERNAME }}
+          # BRIGHTHR_PASSWORD: ${{ secrets.BRIGHTHR_PASSWORD }}
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
