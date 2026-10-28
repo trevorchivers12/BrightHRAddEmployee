@@ -18,6 +18,10 @@ export class commonHelper {
     await expect(this.page.getByTestId('sideBar').getByRole('link', { name: name })).toBeVisible();
   }
 
+  async assertTextDisplayed(name: string){
+    await expect(this.page.getByText(name)).toBeVisible();
+  }
+
   async assertPageTitleIsDisplayed(name: string){
     await expect(this.page.getByRole('heading', { name: name })).toBeVisible();
   }
