@@ -1,6 +1,8 @@
 import { Page, expect } from '@playwright/test';
 import { commonHelper } from '../Helpers/commonHelper';
 
+declare const process: { env: Record<string, string | undefined> };
+
 export class LoginPage {
   
   private readonly page: Page;
@@ -18,8 +20,8 @@ export class LoginPage {
     this.loginLink =  "Log in"
     this.emailAddressField = "Email address"
     this.passwordField = "Password visibility"
-    this.username = "trevor.chivers12@gmail.com"
-    this.password = "Testingtask123"
+    this.username = process.env.BRIGHTHR_USERNAME ?? ""
+    this.password = process.env.BRIGHTHR_PASSWORD ?? ""
     this.loginButton = "login-button"
   }
 

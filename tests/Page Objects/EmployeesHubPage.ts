@@ -77,15 +77,7 @@ export class EmployeesHub {
     async assertEmployeeAddedToHub(firstName: string, lastName: string) {
       await this.commonHelper.assertTextDisplayed(`${firstName} ${lastName}`)
     }
-
-    // async assertEmployee1AddedToHub() {
-    //   await this.commonHelper.assertPageTitleIsDisplayed(`${this.employeeFirstName1} ${this.employeeLastName1}`)
-    // }
-
-    // async assertEmployee2AddedToHub() {
-    //   await this.commonHelper.assertPageTitleIsDisplayed(`${this.employeeFirstName2} ${this.employeeLastName2}`)
-    // }
-
+    
     async assertAddNewEmployeeTitleIsDisplayed () {
       await this.commonHelper.assertPageTitleIsDisplayed(this.addNewEmployeeTitle);
     }
