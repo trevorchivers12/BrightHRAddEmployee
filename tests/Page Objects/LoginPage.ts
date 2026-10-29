@@ -1,5 +1,5 @@
 import { Page, expect } from '@playwright/test';
-import { commonHelper } from '../Helpers/commonHelper';
+import { commonUtils } from '../Helpers/commonUtils';
 
 declare const process: { env: Record<string, string | undefined> };
 
@@ -12,11 +12,11 @@ export class LoginPage {
   private readonly username: string;
   private readonly password: string;
   private readonly loginButton: string;
-  private readonly commonHelper: commonHelper;
+  private readonly commonUtils: commonUtils;
 
   constructor(page: Page) {
     this.page = page;
-    this.commonHelper = new commonHelper(page);
+    this.commonUtils = new commonUtils(page);
     this.loginLink =  "Log in"
     this.emailAddressField = "Email address"
     this.passwordField = "Password visibility"
@@ -26,17 +26,17 @@ export class LoginPage {
   }
 
   async goToLoginPage() {
-    await this.commonHelper.clickLink(this.loginLink);
+    await this.commonUtils.clickLink(this.loginLink);
   }
 
   async fillInCredentials() {
-    await this.commonHelper.assertTextBoxDisplayed(this.emailAddressField);
-    await this.commonHelper.assertTextBoxDisplayed(this.passwordField);
-    await this.commonHelper.fillTextbox(this.emailAddressField, this.username);
-    await this.commonHelper.fillTextbox(this.passwordField, this.password);
+    await this.commonUtils.assertTextBoxDisplayed(this.emailAddressField);
+    await this.commonUtils.assertTextBoxDisplayed(this.passwordField);
+    await this.commonUtils.fillTextbox(this.emailAddressField, this.username);
+    await this.commonUtils.fillTextbox(this.passwordField, this.password);
   }
   
   async clickLoginButton() {
-    await this.commonHelper.clickButtonByTestId(this.loginButton);
+    await this.commonUtils.clickButtonByTestId(this.loginButton);
   }
 }

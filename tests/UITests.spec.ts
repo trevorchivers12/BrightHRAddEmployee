@@ -1,5 +1,9 @@
 import { test, expect } from './Fixtures/Login';
 
+  // test.afterEach(async () => {
+  //   await .removeAll();
+  // });
+
   test('Able to Add Two Employees Successfully', async ({ logIn, homePage, employeesHub }) => {
     await homePage.assertEmployeeSideBarOptionDisplayed();
     await homePage.clickEmployeeSideBarOption();

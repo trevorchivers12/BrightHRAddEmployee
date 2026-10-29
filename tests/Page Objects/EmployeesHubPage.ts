@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { commonHelper } from '../Helpers/commonHelper';
+import { commonUtils } from '../Helpers/commonUtils';
 
 export class EmployeesHub {
   private readonly page: Page;
@@ -29,11 +29,11 @@ export class EmployeesHub {
   private readonly saveNewEmployeeButton: string;
   private readonly successTitle: string;
   private readonly successMessage: string;
-  private readonly commonHelper: commonHelper;
+  private readonly commonUtils: commonUtils;
 
   constructor(page: Page) {
     this.page = page;
-    this.commonHelper = new commonHelper(page);
+    this.commonUtils = new commonUtils(page);
     this.employeesHubURL = "https://sandbox-app.brighthr.com/employee-hub";
     this.addEmployeeButton = "Add employee";
     this.addAnotherEmployeeButton = "Add another employee"
@@ -63,23 +63,23 @@ export class EmployeesHub {
   }
 
     async assertEmployeesHubURLDisplayed() {
-      await this.commonHelper.assertURLDisplayed(new URL(this.employeesHubURL));
+      await this.commonUtils.assertURLDisplayed(new URL(this.employeesHubURL));
     }
 
     async assertEmployeesPageTitleDisplayed() {
-      await this.commonHelper.assertPageTitleIsDisplayed(this.employeesHubPageTitle);
+      await this.commonUtils.assertPageTitleIsDisplayed(this.employeesHubPageTitle);
     }
 
     async assertEmployeeCountTitle() {
-      await this.commonHelper.assertPageTitleIsDisplayed(this.employeeCountHeader)
+      await this.commonUtils.assertPageTitleIsDisplayed(this.employeeCountHeader)
     }
 
     async assertEmployeeAddedToHub(firstName: string, lastName: string) {
-      await this.commonHelper.assertTextDisplayed(`${firstName} ${lastName}`)
+      await this.commonUtils.assertTextDisplayed(`${firstName} ${lastName}`)
     }
     
     async assertAddNewEmployeeTitleIsDisplayed () {
-      await this.commonHelper.assertPageTitleIsDisplayed(this.addNewEmployeeTitle);
+      await this.commonUtils.assertPageTitleIsDisplayed(this.addNewEmployeeTitle);
     }
 
     async assertAddNewEmployeeModalDisplayed() {
@@ -92,74 +92,74 @@ export class EmployeesHub {
     }
 
     async assertAddEmployeeButtonDisplayed() {
-      await this.commonHelper.assertButtonDisplayed(this.addEmployeeButton);
+      await this.commonUtils.assertButtonDisplayed(this.addEmployeeButton);
     }
 
     async assertCloseModalButtonDisplayed() {
-      await this.commonHelper.assertButtonDisplayed(this.closeModalButton);
+      await this.commonUtils.assertButtonDisplayed(this.closeModalButton);
     }
 
     async assertAddAnotherEmployeeButtonDisplayed() {
-      await this.commonHelper.assertButtonDisplayed(this.addAnotherEmployeeButton)
+      await this.commonUtils.assertButtonDisplayed(this.addAnotherEmployeeButton)
     }
 
     async assertFirstNameFieldDisplayedAndFillForEmployee1() {
-      await this.commonHelper.assertTextBoxDisplayed(this.firstNameField)
-      await this.commonHelper.fillTextbox(this.firstNameField, this.employeeFirstName1)
+      await this.commonUtils.assertTextBoxDisplayed(this.firstNameField)
+      await this.commonUtils.fillTextbox(this.firstNameField, this.employeeFirstName1)
     }
     
     async assertLastNameFieldDisplayedAndFillForEmployee1() {
-      await this.commonHelper.assertTextBoxDisplayed(this.lastNameField)
-      await this.commonHelper.fillTextbox(this.lastNameField, this.employeeLastName1)
+      await this.commonUtils.assertTextBoxDisplayed(this.lastNameField)
+      await this.commonUtils.fillTextbox(this.lastNameField, this.employeeLastName1)
     }
 
     async assertEmailAddressFieldDisplayedAndFillForEmployee1() {
-      await this.commonHelper.assertTextBoxDisplayed(this.emailAddressField)
-      await this.commonHelper.fillTextbox(this.emailAddressField, this.employeeEmailAddress1)
+      await this.commonUtils.assertTextBoxDisplayed(this.emailAddressField)
+      await this.commonUtils.fillTextbox(this.emailAddressField, this.employeeEmailAddress1)
     }
 
     async assertPhoneNumberFieldDisplayedAndFillForEmployee1() {
-      await this.commonHelper.assertTextBoxDisplayed(this.phoneNumberField)
-      await this.commonHelper.fillTextbox(this.phoneNumberField, this.employeePhoneNumber1)
+      await this.commonUtils.assertTextBoxDisplayed(this.phoneNumberField)
+      await this.commonUtils.fillTextbox(this.phoneNumberField, this.employeePhoneNumber1)
     }
 
     async assertFirstNameFieldDisplayedAndFillForEmployee2() {
-      await this.commonHelper.assertTextBoxDisplayed(this.firstNameField)
-      await this.commonHelper.fillTextbox(this.firstNameField, this.employeeFirstName2)
+      await this.commonUtils.assertTextBoxDisplayed(this.firstNameField)
+      await this.commonUtils.fillTextbox(this.firstNameField, this.employeeFirstName2)
     }
     
     async assertLastNameFieldDisplayedAndFillForEmployee2() {
-      await this.commonHelper.assertTextBoxDisplayed(this.lastNameField)
-      await this.commonHelper.fillTextbox(this.lastNameField, this.employeeLastName2)
+      await this.commonUtils.assertTextBoxDisplayed(this.lastNameField)
+      await this.commonUtils.fillTextbox(this.lastNameField, this.employeeLastName2)
     }
 
     async assertEmailAddressFieldDisplayedAndFillForEmployee2() {
-      await this.commonHelper.assertTextBoxDisplayed(this.emailAddressField)
-      await this.commonHelper.fillTextbox(this.emailAddressField, this.employeeEmailAddress2)
+      await this.commonUtils.assertTextBoxDisplayed(this.emailAddressField)
+      await this.commonUtils.fillTextbox(this.emailAddressField, this.employeeEmailAddress2)
     }
 
     async assertPhoneNumberFieldDisplayedAndFillForEmployee2() {
-      await this.commonHelper.assertTextBoxDisplayed(this.phoneNumberField)
-      await this.commonHelper.fillTextbox(this.phoneNumberField, this.employeePhoneNumber2)
+      await this.commonUtils.assertTextBoxDisplayed(this.phoneNumberField)
+      await this.commonUtils.fillTextbox(this.phoneNumberField, this.employeePhoneNumber2)
     }
 
 
     async assertJobTitleFieldDisplayedAndFill() {
-      await this.commonHelper.assertTextBoxDisplayed(this.jobTitleField)
-      await this.commonHelper.fillTextbox(this.jobTitleField, this.jobTitle)
+      await this.commonUtils.assertTextBoxDisplayed(this.jobTitleField)
+      await this.commonUtils.fillTextbox(this.jobTitleField, this.jobTitle)
     }
 
     async assertStartDateDisplayedAndAddStartDate(){
-      await this.commonHelper.assertTextBoxDisplayed(this.startDateField)
-      await this.commonHelper.fillTextbox(this.startDateField, this.startDate)
+      await this.commonUtils.assertTextBoxDisplayed(this.startDateField)
+      await this.commonUtils.fillTextbox(this.startDateField, this.startDate)
     }
 
     async assertSuccessEmployeeAddedTitleDisplayed() {
-      await this.commonHelper.assertPageTitleIsDisplayed(this.successTitle)
+      await this.commonUtils.assertPageTitleIsDisplayed(this.successTitle)
     } 
 
     async assertSuccessfulMessageDisplayedForAddedEmployeeTest(name: string) {
-      await this.commonHelper.assertTextDisplayed(`${name} ${this.successMessage}`)
+      await this.commonUtils.assertTextDisplayed(`${name} ${this.successMessage}`)
     }
 
     async assertSuccessfulModalAndMessageDisplayedForNewEmployee(name: string) {
@@ -189,20 +189,20 @@ export class EmployeesHub {
 
     async clickAddEmployeeButton() {
       await this.assertAddEmployeeButtonDisplayed();
-      await this.commonHelper.clickButtonByRole(this.addEmployeeButton);
+      await this.commonUtils.clickButtonByRole(this.addEmployeeButton);
     }
 
     async clickAddAnotherEmployeeButton() {
       await this.assertAddAnotherEmployeeButtonDisplayed();
-      await this.commonHelper.clickButtonByRole(this.addAnotherEmployeeButton)
+      await this.commonUtils.clickButtonByRole(this.addAnotherEmployeeButton)
     }
 
     async clickCloseModalButton() {
       await this.assertCloseModalButtonDisplayed();
-      await this.commonHelper.clickButtonByRole(this.closeModalButton);
+      await this.commonUtils.clickButtonByRole(this.closeModalButton);
     }
 
     async clickSaveNewEmployeeButton() {
-      await this.commonHelper.clickButtonByRole(this.saveNewEmployeeButton)
+      await this.commonUtils.clickButtonByRole(this.saveNewEmployeeButton)
     }
 }
