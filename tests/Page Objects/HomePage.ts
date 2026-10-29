@@ -22,7 +22,7 @@ private readonly sideBarOption: string;
 
   async assertEmployeeSideBarOptionDisplayed() {
     await this.commonUtils.assertOptionDisplayedInSideBar(this.sideBarOption);
-}
+  }
 
   async clickEmployeeSideBarOption() {
     await this.commonUtils.clickOptionInSideBar(this.sideBarOption);

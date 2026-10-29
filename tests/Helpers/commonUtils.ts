@@ -4,7 +4,7 @@ export class commonUtils {
   constructor(
     private readonly page: Page) {}
 
-  // Reusable Assertions - simply pass in the variable in test/ pageobject
+  // Reusable Assertions 
 
   async assertTextBoxDisplayed(name: string){
     await expect(this.page.getByRole('textbox', { name: name })).toBeVisible();
@@ -65,5 +65,4 @@ export class commonUtils {
   async clickButtonByRole(button: string){
     await this.page.getByRole('button', { name: button }).click();
   }
-
 };
