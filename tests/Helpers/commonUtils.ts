@@ -22,6 +22,10 @@ export class commonUtils {
     await expect(this.page.getByText(text)).toBeVisible();
   }
 
+  async assertTextIsNotDisplayed(text: string){
+    await expect(this.page.getByText(text)).not.toBeVisible();
+  }
+
   async assertPageTitleIsDisplayed(title: string){
     await expect(this.page.getByRole('heading', { name: title })).toBeVisible();
   }

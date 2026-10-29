@@ -16,12 +16,12 @@ export class EmployeesHub {
   private readonly phoneNumberField: string;
   private readonly startDateField: string;
   private readonly jobTitleField: string;
-  private readonly employeeFirstName1: string;
-  private readonly employeeLastName1: string;
+  public readonly employeeFirstName1: string;
+  public readonly employeeLastName1: string;
   private readonly employeeEmailAddress1: string;
   private readonly employeePhoneNumber1: string;
-  private readonly employeeFirstName2: string;
-  private readonly employeeLastName2: string;
+  public readonly employeeFirstName2: string;
+  public readonly employeeLastName2: string;
   private readonly employeeEmailAddress2: string;
   private readonly employeePhoneNumber2: string;
   private readonly startDate: string;
@@ -76,6 +76,10 @@ export class EmployeesHub {
 
     async assertEmployeeAddedToHub(firstName: string, lastName: string) {
       await this.commonUtils.assertTextDisplayed(`${firstName} ${lastName}`)
+    }
+
+    async assertEmployeeRemovedFromHub(firstName: string, lastName: string) {
+      await this.commonUtils.assertTextIsNotDisplayed(`${firstName} ${lastName}`)
     }
     
     async assertAddNewEmployeeTitleIsDisplayed () {
