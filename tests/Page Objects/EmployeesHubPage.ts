@@ -147,7 +147,6 @@ export class EmployeesHub {
       await this.commonUtils.fillTextbox(this.phoneNumberField, this.employeePhoneNumber2)
     }
 
-
     async assertJobTitleFieldDisplayedAndFill() {
       await this.commonUtils.assertTextBoxDisplayed(this.jobTitleField)
       await this.commonUtils.fillTextbox(this.jobTitleField, this.jobTitle)

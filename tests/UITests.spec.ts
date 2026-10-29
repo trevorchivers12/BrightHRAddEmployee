@@ -1,11 +1,6 @@
 import { test, expect } from './Fixtures/Login';
-import { tearDownHelper } from './Helpers/tearDownHelper';
 
-  test.afterEach(async ({ page }) => {
-    await new tearDownHelper(page).removeAllEmployeeRecords();
-});
-
-  test('Able to Add Two Employees Successfully', async ({ logIn, homePage, employeesHub }) => {
+  test('Able to Add Two Employees Successfully', async ({ logIn, homePage, employeesHub, removeEmployeeRecords }) => {
     await homePage.assertEmployeeSideBarOptionDisplayed();
     await homePage.clickEmployeeSideBarOption();
     await employeesHub.assertEmployeesHubPageDisplayed();
