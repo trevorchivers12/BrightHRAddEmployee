@@ -38,7 +38,7 @@ export const test = base.extend<LoginFixtures>({
 
   removeEmployeeRecords: async ({ page }, use) => {
     await use();
-    await new tearDownHelper(page).removeAllEmployeeRecords();
+    await new tearDownHelper(page).removeEmployeeRecords();
   },
 });
 

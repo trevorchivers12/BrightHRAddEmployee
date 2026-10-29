@@ -14,22 +14,20 @@ export class tearDownHelper {
         this.employeesHub = new EmployeesHub(page);
     }
   
-    async removeAllEmployeeRecords() {
-        await this.page.getByTestId('EditButton').nth(1).click();
-        await this.page.getByRole('link', { name: 'Delete employee record' }).click();
-        await this.page.getByTestId('checkboxLabel').click();
-        await this.page.getByTestId('deleteCheckBox').check();
-        await this.page.getByRole('button', { name: 'Delete testFirstName1' }).click();
-        await this.page.getByRole('button', { name: 'Return to employee hub' }).click();
+    async removeEmployeeRecords() {
+        await this.employeesHub.clickEditButton();
+        await this.employeesHub.clickDeleteEmployeeLink();
+        await this.employeesHub.clickCheckBox();
+        await this.employeesHub.clickDeleteEmployeeButton(this.employeesHub.employeeFirstName1);
+        await this.employeesHub.clickReturnToEmployeeHubButton();
         await this.homePage.clickEmployeeSideBarOption();
         await this.employeesHub.assertEmployeeRemovedFromHub(this.employeesHub.employeeFirstName1, this.employeesHub.employeeLastName1)
-        await this.page.getByTestId('EditButton').nth(1).click();
-        await this.page.getByRole('link', { name: 'Delete employee record' }).click();
-        await this.page.getByTestId('checkboxLabel').click();
-        await this.page.getByTestId('deleteCheckBox').check();
-        await this.page.getByRole('button', { name: 'Delete testFirstName2' }).click();
-        await this.page.getByRole('button', { name: 'Return to employee hub' }).click();
+        await this.employeesHub.clickEditButton();
+        await this.employeesHub.clickDeleteEmployeeLink();
+        await this.employeesHub.clickCheckBox();
+        await this.employeesHub.clickDeleteEmployeeButton(this.employeesHub.employeeFirstName2);
+        await this.employeesHub.clickReturnToEmployeeHubButton();
         await this.homePage.clickEmployeeSideBarOption();
         await this.employeesHub.assertEmployeeRemovedFromHub(this.employeesHub.employeeFirstName2, this.employeesHub.employeeLastName2)
-   }
+    }
 };

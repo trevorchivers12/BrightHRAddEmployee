@@ -29,6 +29,13 @@ export class EmployeesHub {
   private readonly saveNewEmployeeButton: string;
   private readonly successTitle: string;
   private readonly successMessage: string;
+  private readonly editButton: string;
+  private readonly checkboxLabel: string;
+  private readonly deleteEmployeeLink: string;
+  private readonly deleteCheckBox: string;
+  private readonly deleteEmployee1Button: string;
+  private readonly deleteEmployee2Button: string;
+  private readonly returnToHubButton: string;
   private readonly commonUtils: commonUtils;
 
   constructor(page: Page) {
@@ -59,6 +66,13 @@ export class EmployeesHub {
     this.jobTitle = "Test Engineer";
     this.successTitle = "Success! New employee added"
     this.successMessage = "added to BrightHR Lite"
+    this.editButton = "EditButton"
+    this.deleteEmployeeLink = "Delete employee record"
+    this.checkboxLabel = "checkboxLabel"
+    this.deleteCheckBox = "deleteCheckBox"
+    this.deleteEmployee1Button = "Delete testFirstName1"
+    this.deleteEmployee2Button = "Delete testFirstName2"
+    this.returnToHubButton = "Return to employee hub"
     this.saveNewEmployeeButton = "Save new employee"
   }
 
@@ -170,7 +184,7 @@ export class EmployeesHub {
       await this.assertSuccessfulMessageDisplayedForAddedEmployeeTest(name);
     }
 
-    async addDetailForEmployee1() {
+    async addDetailsForEmployee1() {
       await this.assertFirstNameFieldDisplayedAndFillForEmployee1();
       await this.assertLastNameFieldDisplayedAndFillForEmployee1();
       await this.assertEmailAddressFieldDisplayedAndFillForEmployee1();
@@ -180,7 +194,7 @@ export class EmployeesHub {
       await this.clickSaveNewEmployeeButton();
     }
 
-    async addDetailForEmployee2() {
+    async addDetailsForEmployee2() {
       await this.assertFirstNameFieldDisplayedAndFillForEmployee2();
       await this.assertLastNameFieldDisplayedAndFillForEmployee2();
       await this.assertEmailAddressFieldDisplayedAndFillForEmployee2();
@@ -207,5 +221,25 @@ export class EmployeesHub {
 
     async clickSaveNewEmployeeButton() {
       await this.commonUtils.clickButtonByRole(this.saveNewEmployeeButton)
+    }
+
+    async clickEditButton() {
+      await this.page.getByTestId(this.editButton).nth(1).click();
+    }
+
+    async clickDeleteEmployeeLink() {
+      await this.commonUtils.clickLink(this.deleteEmployeeLink)
+    }
+
+    async clickCheckBox() {
+      await this.commonUtils.clickButtonByTestId(this.checkboxLabel)
+    }
+
+    async clickDeleteEmployeeButton(button: string) {
+      await this.commonUtils.clickButtonByRole(button)
+    }
+
+    async clickReturnToEmployeeHubButton() {
+      await this.commonUtils.clickButtonByRole(this.returnToHubButton)
     }
 }
