@@ -4,7 +4,7 @@ Technical task to add employee to Bright HR
 - Fixtures added to login and Delete Employees
 - PageObjects added for functions and variables
 - commonUtils - custom functions added so able to reuse through the pageobjects and tests
-- taerDownHelper added to remove employees after adding to the employees hub
+- tearDownHelper added to remove employees after adding to the employees hub
 - GitHub workflow added
 
 Covers the following steps:
