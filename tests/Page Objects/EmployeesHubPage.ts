@@ -36,6 +36,8 @@ export class EmployeesHub {
   private readonly deleteEmployee1Button: string;
   private readonly deleteEmployee2Button: string;
   private readonly returnToHubButton: string;
+  private readonly viewOrEditHeader: string;
+  private readonly areYouSureMessage: string;
   private readonly commonUtils: commonUtils;
 
   constructor(page: Page) {
@@ -74,6 +76,9 @@ export class EmployeesHub {
     this.deleteEmployee2Button = "Delete testFirstName2"
     this.returnToHubButton = "Return to employee hub"
     this.saveNewEmployeeButton = "Save new employee"
+    this.viewOrEditHeader = "View or edit employee profile"
+    this.areYouSureMessage = "Are you sure you want to"
+
   }
 
     async assertEmployeesHubURLDisplayed() {
@@ -100,6 +105,14 @@ export class EmployeesHub {
       await this.commonUtils.assertPageTitleIsDisplayed(this.addNewEmployeeTitle);
     }
 
+    async assertViewOrEditHeaderDisplayed() {
+      await this.commonUtils.assertPageTitleIsDisplayed(this.viewOrEditHeader);
+    }
+
+     async assertAreYouSureMessageDisplayed() {
+      await this.commonUtils.assertTextDisplayed(this.areYouSureMessage)
+    }
+
     async assertAddNewEmployeeModalDisplayed() {
       await this.assertAddNewEmployeeTitleIsDisplayed()
     }
@@ -110,53 +123,53 @@ export class EmployeesHub {
     }
 
     async assertAddEmployeeButtonDisplayed() {
-      await this.commonUtils.assertButtonDisplayed(this.addEmployeeButton);
+      await this.commonUtils.assertButtonDisplayedByRole(this.addEmployeeButton);
     }
 
     async assertCloseModalButtonDisplayed() {
-      await this.commonUtils.assertButtonDisplayed(this.closeModalButton);
+      await this.commonUtils.assertButtonDisplayedByRole(this.closeModalButton);
     }
 
     async assertAddAnotherEmployeeButtonDisplayed() {
-      await this.commonUtils.assertButtonDisplayed(this.addAnotherEmployeeButton)
+      await this.commonUtils.assertButtonDisplayedByRole(this.addAnotherEmployeeButton)
     }
 
-    async assertFirstNameFieldDisplayedAndFillForEmployee1() {
+    async addFirstNameForEmployee1() {
       await this.commonUtils.assertTextBoxDisplayed(this.firstNameField)
       await this.commonUtils.fillTextbox(this.firstNameField, this.employeeFirstName1)
     }
     
-    async assertLastNameFieldDisplayedAndFillForEmployee1() {
+    async addLastNameForEmployee1() {
       await this.commonUtils.assertTextBoxDisplayed(this.lastNameField)
       await this.commonUtils.fillTextbox(this.lastNameField, this.employeeLastName1)
     }
 
-    async assertEmailAddressFieldDisplayedAndFillForEmployee1() {
+    async addEmailAddressForEmployee1() {
       await this.commonUtils.assertTextBoxDisplayed(this.emailAddressField)
       await this.commonUtils.fillTextbox(this.emailAddressField, this.employeeEmailAddress1)
     }
 
-    async assertPhoneNumberFieldDisplayedAndFillForEmployee1() {
+    async addPhoneNumberForEmployee1() {
       await this.commonUtils.assertTextBoxDisplayed(this.phoneNumberField)
       await this.commonUtils.fillTextbox(this.phoneNumberField, this.employeePhoneNumber1)
     }
 
-    async assertFirstNameFieldDisplayedAndFillForEmployee2() {
+    async addFirstNameForEmployee2() {
       await this.commonUtils.assertTextBoxDisplayed(this.firstNameField)
       await this.commonUtils.fillTextbox(this.firstNameField, this.employeeFirstName2)
     }
     
-    async assertLastNameFieldDisplayedAndFillForEmployee2() {
+    async addLastNameForEmployee2() {
       await this.commonUtils.assertTextBoxDisplayed(this.lastNameField)
       await this.commonUtils.fillTextbox(this.lastNameField, this.employeeLastName2)
     }
 
-    async assertEmailAddressFieldDisplayedAndFillForEmployee2() {
+    async addEmailAddressForEmployee2() {
       await this.commonUtils.assertTextBoxDisplayed(this.emailAddressField)
       await this.commonUtils.fillTextbox(this.emailAddressField, this.employeeEmailAddress2)
     }
 
-    async assertPhoneNumberFieldDisplayedAndFillForEmployee2() {
+    async addPhoneNumberForEmployee2() {
       await this.commonUtils.assertTextBoxDisplayed(this.phoneNumberField)
       await this.commonUtils.fillTextbox(this.phoneNumberField, this.employeePhoneNumber2)
     }
@@ -184,21 +197,26 @@ export class EmployeesHub {
       await this.assertSuccessfulMessageDisplayedForAddedEmployeeTest(name);
     }
 
+    async viewOrEditPageDisplayed() {
+      await this.assertViewOrEditHeaderDisplayed();
+      await this.assertAreYouSureMessageDisplayed();
+    }
+
     async addDetailsForEmployee1() {
-      await this.assertFirstNameFieldDisplayedAndFillForEmployee1();
-      await this.assertLastNameFieldDisplayedAndFillForEmployee1();
-      await this.assertEmailAddressFieldDisplayedAndFillForEmployee1();
-      await this.assertPhoneNumberFieldDisplayedAndFillForEmployee1();
+      await this.addFirstNameForEmployee1();
+      await this.addLastNameForEmployee1();
+      await this.addEmailAddressForEmployee1();
+      await this.addPhoneNumberForEmployee1();
       await this.assertStartDateDisplayedAndAddStartDate();
       await this.assertJobTitleFieldDisplayedAndFill();
       await this.clickSaveNewEmployeeButton();
     }
 
     async addDetailsForEmployee2() {
-      await this.assertFirstNameFieldDisplayedAndFillForEmployee2();
-      await this.assertLastNameFieldDisplayedAndFillForEmployee2();
-      await this.assertEmailAddressFieldDisplayedAndFillForEmployee2();
-      await this.assertPhoneNumberFieldDisplayedAndFillForEmployee2();
+      await this.addFirstNameForEmployee2();
+      await this.addLastNameForEmployee2();
+      await this.addEmailAddressForEmployee2();
+      await this.addPhoneNumberForEmployee2();
       await this.assertStartDateDisplayedAndAddStartDate();
       await this.assertJobTitleFieldDisplayedAndFill();
       await this.clickSaveNewEmployeeButton();
@@ -220,6 +238,7 @@ export class EmployeesHub {
     }
 
     async clickSaveNewEmployeeButton() {
+      await this.commonUtils.assertButtonDisplayedByRole(this.saveNewEmployeeButton)
       await this.commonUtils.clickButtonByRole(this.saveNewEmployeeButton)
     }
 
@@ -228,18 +247,22 @@ export class EmployeesHub {
     }
 
     async clickDeleteEmployeeLink() {
+      await this.commonUtils.assertLinkDisplayed(this.deleteEmployeeLink)
       await this.commonUtils.clickLink(this.deleteEmployeeLink)
     }
 
     async clickCheckBox() {
+      await this.commonUtils.assertButtonDisplayedById(this.checkboxLabel)
       await this.commonUtils.clickButtonByTestId(this.checkboxLabel)
     }
 
     async clickDeleteEmployeeButton(button: string) {
+      await this.commonUtils.assertButtonDisplayedByRole(button)
       await this.commonUtils.clickButtonByRole(button)
     }
 
     async clickReturnToEmployeeHubButton() {
+      await this.commonUtils.assertButtonDisplayedByRole(this.returnToHubButton)
       await this.commonUtils.clickButtonByRole(this.returnToHubButton)
     }
 }
