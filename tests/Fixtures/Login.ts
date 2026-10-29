@@ -2,6 +2,7 @@ import { test as base, Page } from '@playwright/test';
 import { HomePage } from '../Page Objects/HomePage';
 import { LoginPage } from '../Page Objects/LoginPage';
 import { EmployeesHub } from '../Page Objects/EmployeesHubPage';
+import { tearDownHelper } from '../Helpers/tearDownHelper';
 
 const BASE_URL = "https://sandbox-app.brighthr.com/lite";
 
@@ -10,6 +11,7 @@ type LoginFixtures = {
   loginPage: LoginPage;
   logIn: Page;
   employeesHub: EmployeesHub;
+  removeEmployeeRecords: void;
 };
 
 export const test = base.extend<LoginFixtures>({
@@ -32,6 +34,11 @@ export const test = base.extend<LoginFixtures>({
     await loginPage.clickLoginButton();
     await homePage.assertHomepageURLDisplayed();
     await use(page);
+  },
+
+  removeEmployeeRecords: async ({ page }, use) => {
+    await use();
+    await new tearDownHelper(page).removeAllEmployeeRecords();
   },
 });
 
