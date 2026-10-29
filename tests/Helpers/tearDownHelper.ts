@@ -17,6 +17,7 @@ export class tearDownHelper {
     async removeEmployeeRecords() {
         await this.employeesHub.clickEditButton();
         await this.employeesHub.clickDeleteEmployeeLink();
+        await this.employeesHub.viewOrEditPageDisplayed();
         await this.employeesHub.clickCheckBox();
         await this.employeesHub.clickDeleteEmployeeButton(this.employeesHub.employeeFirstName1);
         await this.employeesHub.clickReturnToEmployeeHubButton();
@@ -24,6 +25,7 @@ export class tearDownHelper {
         await this.employeesHub.assertEmployeeRemovedFromHub(this.employeesHub.employeeFirstName1, this.employeesHub.employeeLastName1)
         await this.employeesHub.clickEditButton();
         await this.employeesHub.clickDeleteEmployeeLink();
+        await this.employeesHub.viewOrEditPageDisplayed();
         await this.employeesHub.clickCheckBox();
         await this.employeesHub.clickDeleteEmployeeButton(this.employeesHub.employeeFirstName2);
         await this.employeesHub.clickReturnToEmployeeHubButton();

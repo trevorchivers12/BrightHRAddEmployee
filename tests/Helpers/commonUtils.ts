@@ -34,8 +34,12 @@ export class commonUtils {
     await expect(this.page.getByRole('link', { name: link })).toBeVisible();
   }
 
-  async assertButtonDisplayed(button: string){
+  async assertButtonDisplayedByRole(button: string){
     await expect(this.page.getByRole('button', { name: button })).toBeVisible();
+  }
+
+  async assertButtonDisplayedById(button: string){
+    await expect(this.page.getByTestId(button)).toBeVisible();
   }
 
   async assertLocatorIsDisplayed (id: string){
